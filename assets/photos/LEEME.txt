@@ -1,0 +1,3 @@
+Carpeta opcional para fotografías.
+
+La página funciona sin fotos. Si luego quieres añadir recuerdos reales, puedes colocar aquí las imágenes y modificar index.html para usarlas en las secciones de Arequipa, Huaraz, Tacna o la constelación de momentos.
