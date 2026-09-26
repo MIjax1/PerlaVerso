@@ -407,13 +407,6 @@ function pvOpenLove(){
   pvHeartBurst(innerWidth/2,innerHeight/2,18);
 }
 function pvCloseLove(){pvLoveModal?.classList.remove('open');pvLoveModal?.setAttribute('aria-hidden','true')}
-pvLoveRain?.addEventListener('click',()=>{pvBurstElement(pvLoveRain,15);pvHeartRain(95,5600)});
-pvHeartHero?.addEventListener('click',()=>{pvBurstElement(pvHeartHero,26);pvHeartRain(65,4000);setTimeout(pvOpenLove,650)});
-pvBigHeart?.addEventListener('click',()=>{pvBurstElement(pvBigHeart,32);pvHeartRain(125,6500)});
-pvLoveNote?.addEventListener('click',pvOpenLove);
-pvLoveClose?.addEventListener('click',pvCloseLove);
-pvLoveModal?.addEventListener('click',e=>{if(e.target===pvLoveModal)pvCloseLove()});
-pvLoveLetterRain?.addEventListener('click',()=>{pvBurstElement(pvLoveLetterRain,25);pvHeartRain(115,6200);pvCloseLove()});
 addEventListener('dblclick',e=>{if(e.target.closest('button,a,input,textarea'))return;pvHeartBurst(e.clientX,e.clientY,10)});
 let pvTrail=0;
 addEventListener('pointermove',e=>{
@@ -426,3 +419,57 @@ addEventListener('pointermove',e=>{
   document.body.appendChild(h);setTimeout(()=>h.remove(),1050);
 });
 setInterval(()=>{if(!document.hidden&&!pvHeartRainActive)pvFallingHeart(0,.65)},2600);
+
+
+// PERLAVERSO V4 - TRANSICIONES ROMANTICAS
+const pvChapterTransition = $('#chapterTransition');
+
+// Keep the existing navigation, but make forward chapter changes feel like scenes.
+const pvGoV3 = pvGo;
+pvGo = function(index){
+  const target = Math.max(0,Math.min(pvChapters.length-1,index));
+  const movingForward = target > pvActive;
+  if(movingForward){
+    pvRomanticChapterTransition(target);
+  }
+  pvGoV3(target);
+};
+
+function pvRomanticChapterTransition(target){
+  // Different intensities keep each transition from feeling identical.
+  const intensity = 45 + ((target * 9) % 28);
+  const duration = 2700 + ((target * 230) % 1300);
+  pvHeartRainActive = false;
+  pvHeartRain(intensity,duration);
+  pvChapterTransition?.classList.remove('show');
+  void pvChapterTransition?.offsetWidth;
+  pvChapterTransition?.classList.add('show');
+  setTimeout(()=>pvChapterTransition?.classList.remove('show'),820);
+}
+
+// Starting the experience is also a chapter change.
+enterBtn?.addEventListener('click',()=>{
+  pvHeartRainActive=false;
+  pvHeartRain(58,3200);
+  pvChapterTransition?.classList.add('show');
+  setTimeout(()=>pvChapterTransition?.classList.remove('show'),820);
+});
+
+// Clicking a non-interactive area of a chapter advances to the next scene.
+pvChapters.forEach((chapter,index)=>{
+  if(index===pvChapters.length-1)return;
+  chapter.addEventListener('click',e=>{
+    const interactive=e.target.closest('button,a,input,textarea,select,[role="button"],.map-point,.star-event,.word-cloud,.phone,.achievement-card,.music-player,.story-controls,.chapter-rail');
+    if(interactive)return;
+    if(window.getSelection?.().toString())return;
+    pvGo(index+1);
+  });
+});
+
+// Add an active state so each chapter gets a richer entrance animation.
+const pvSetActiveV3 = pvSetActive;
+pvSetActive = function(index){
+  pvSetActiveV3(index);
+  pvChapters.forEach((chapter,i)=>chapter.classList.toggle('chapter-active',i===index));
+};
+pvSetActive(pvActive);
