@@ -473,3 +473,54 @@ pvSetActive = function(index){
   pvChapters.forEach((chapter,i)=>chapter.classList.toggle('chapter-active',i===index));
 };
 pvSetActive(pvActive);
+
+
+// CARTA FINAL PERLAVERSO
+const loveEnvelope = $('#loveEnvelope');
+const letterModal = $('#letterModal');
+const letterClose = $('#letterClose');
+let envelopeBusy = false;
+
+function openFinalLetter(){
+  if(envelopeBusy) return;
+  envelopeBusy = true;
+  loveEnvelope?.classList.add('opening');
+
+  // A softer heart burst makes opening the envelope feel like part of the story.
+  if (typeof pvHeartBurst === 'function' && loveEnvelope) {
+    const r = loveEnvelope.getBoundingClientRect();
+    pvHeartBurst(r.left + r.width / 2, r.top + r.height * .44, 18);
+  }
+  if (typeof pvHeartRain === 'function') {
+    pvHeartRainActive = false;
+    pvHeartRain(36, 2300);
+  }
+
+  setTimeout(() => {
+    letterModal?.classList.add('open');
+    letterModal?.setAttribute('aria-hidden','false');
+    document.body.classList.add('letter-open');
+  }, 620);
+
+  setTimeout(() => { envelopeBusy = false; }, 1000);
+}
+
+function closeFinalLetter(){
+  letterModal?.classList.remove('open');
+  letterModal?.setAttribute('aria-hidden','true');
+  document.body.classList.remove('letter-open');
+  setTimeout(() => loveEnvelope?.classList.remove('opening'), 260);
+}
+
+loveEnvelope?.addEventListener('click', openFinalLetter);
+loveEnvelope?.addEventListener('keydown', (e) => {
+  if(e.key === 'Enter' || e.key === ' '){
+    e.preventDefault();
+    openFinalLetter();
+  }
+});
+letterClose?.addEventListener('click', closeFinalLetter);
+$$('[data-letter-close]').forEach(el => el.addEventListener('click', closeFinalLetter));
+addEventListener('keydown', (e) => {
+  if(e.key === 'Escape' && letterModal?.classList.contains('open')) closeFinalLetter();
+});
