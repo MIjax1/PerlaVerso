@@ -57,12 +57,11 @@
     <div class="story-meta"><span>Capítulo actual</span><strong id="currentChapterLabel">Inicio</strong></div>
     <button type="button" class="story-btn primary" id="nextChapter">→</button>
   </div>
-
-  <div class="love-controls">
-    <button class="love-rain-btn" id="loveRainBtn" type="button" title="Haz llover corazones"><span class="love-rain-icon">💗</span><span>Corazones</span></button>
-    <button class="love-note-btn" id="loveNoteBtn" type="button" title="Abrir detalle escondido">✦</button>
-  </div>
   <div class="heart-layer" id="heartLayer" aria-hidden="true"></div>
+  <div class="chapter-transition" id="chapterTransition" aria-hidden="true"><i></i><span>♡</span></div>
+  <div class="romance-field" aria-hidden="true">
+    <i>♡</i><i>♡</i><i>♡</i><i>♡</i><i>♡</i><i>♡</i><i>♡</i><i>♡</i><i>♡</i><i>♡</i>
+  </div>
 
   <main>
     <section class="hero chapter" id="inicio" data-chapter-label="Inicio">
@@ -90,9 +89,8 @@
         <p class="song-hint">♫ Caminando por la vida · Melendi</p>
         <div class="guide-card reveal visible">
           <strong>Modo recorrido activado</strong>
-          <p>Usa <b>COMENZAR</b>, las flechas o las teclas <b>← →</b>. Cada parada tiene algo para descubrir.</p>
+          <p>Pulsa <b>COMENZAR</b>. Luego toca una zona libre de cada capítulo o usa <b>→</b> para continuar; cada cambio de escena tendrá su propia lluvia de corazones.</p>
         </div>
-        <button class="heart-hero-btn" id="heartHeroBtn" type="button"><span>♡</span> UN PEQUEÑO DETALLE PARA TI <span>♡</span></button>
       </div>
 
       <div class="hero-orbit" aria-hidden="true">
@@ -392,8 +390,7 @@
         </p>
         <p class="closing-last">Y mientras tanto… <strong>el Perlaverso sigue expandiéndose.</strong></p>
         <div class="heart-divider" aria-hidden="true"><span>♡</span><i></i><span>♡</span><i></i><span>♡</span></div>
-        <p class="closing-soft">Un pequeño recordatorio: hay presencias que hacen el camino un poquito más bonito.</p>
-        <button class="big-heart-btn" id="bigHeartBtn" type="button">HAZ LLOVER CORAZONES 💗</button>
+        <p class="closing-soft">Un pequeño recordatorio: hay presencias que, sin proponérselo, vuelven más bonito el camino y dejan ganas de seguir descubriendo el siguiente capítulo.</p>
         <button class="primary-btn ghost" id="continueBtn" type="button">CONTINUARÁ…</button>
         <div class="next-mission" id="nextMission" aria-live="polite"></div>
         <p class="signature">Jimy ✦ 2026</p>
@@ -414,20 +411,6 @@
   </aside>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
-  <div class="love-modal" id="loveModal" aria-hidden="true">
-    <div class="love-modal-card">
-      <button class="love-modal-close" id="loveModalClose" type="button" aria-label="Cerrar">×</button>
-      <div class="love-letter-heart">♡</div>
-      <p class="kicker">UN DETALLE ESCONDIDO</p>
-      <h3>Para Perla</h3>
-      <p>No hacía falta que fuera cumpleaños, aniversario ni una fecha marcada en el calendario.</p>
-      <p>A veces simplemente provoca guardar un pedacito bonito de las personas, las coincidencias y los momentos que hacen más especial el camino.</p>
-      <p class="love-letter-last">Este pequeño universo existe por eso: <strong>porque algunas personas dejan una vibra bonita incluso en los días más normales.</strong></p>
-      <button class="love-letter-rain" id="loveLetterRain" type="button">LLENAR EL PERLAVERSO DE CORAZONES 💗</button>
-      <span class="love-sign">— Jimy</span>
-    </div>
-  </div>
 
   <div class="call-modal" id="callModal" aria-hidden="true">
     <div class="call-modal-card">
