@@ -38,8 +38,34 @@
     </button>
   </header>
 
+
+  <div class="chapter-rail" id="chapterRail" aria-label="Capítulos del recorrido">
+    <button class="chapter-dot active" data-target="inicio"><span>00</span><small>Inicio</small></button>
+    <button class="chapter-dot" data-target="coincidencias"><span>01</span><small>Coincidencias</small></button>
+    <button class="chapter-dot" data-target="llamadas"><span>02</span><small>Llamadas</small></button>
+    <button class="chapter-dot" data-target="impacto"><span>03</span><small>Impacto</small></button>
+    <button class="chapter-dot" data-target="logros"><span>04</span><small>Logros</small></button>
+    <button class="chapter-dot" data-target="rutas"><span>05</span><small>Rutas</small></button>
+    <button class="chapter-dot" data-target="constelacion"><span>06</span><small>Constelación</small></button>
+    <button class="chapter-dot" data-target="expresiones"><span>07</span><small>Expresiones</small></button>
+    <button class="chapter-dot" data-target="mensaje"><span>08</span><small>Mensaje</small></button>
+    <button class="chapter-dot" data-target="cierre"><span>09</span><small>Cierre</small></button>
+  </div>
+
+  <div class="story-controls" id="storyControls">
+    <button type="button" class="story-btn" id="prevChapter">←</button>
+    <div class="story-meta"><span>Capítulo actual</span><strong id="currentChapterLabel">Inicio</strong></div>
+    <button type="button" class="story-btn primary" id="nextChapter">→</button>
+  </div>
+
+  <div class="love-controls">
+    <button class="love-rain-btn" id="loveRainBtn" type="button" title="Haz llover corazones"><span class="love-rain-icon">💗</span><span>Corazones</span></button>
+    <button class="love-note-btn" id="loveNoteBtn" type="button" title="Abrir detalle escondido">✦</button>
+  </div>
+  <div class="heart-layer" id="heartLayer" aria-hidden="true"></div>
+
   <main>
-    <section class="hero" id="inicio">
+    <section class="hero chapter" id="inicio" data-chapter-label="Inicio">
       <div class="hero-road" aria-hidden="true">
         <div class="road-line left"></div>
         <div class="road-line right"></div>
@@ -62,6 +88,11 @@
           <span aria-hidden="true">→</span>
         </button>
         <p class="song-hint">♫ Caminando por la vida · Melendi</p>
+        <div class="guide-card reveal visible">
+          <strong>Modo recorrido activado</strong>
+          <p>Usa <b>COMENZAR</b>, las flechas o las teclas <b>← →</b>. Cada parada tiene algo para descubrir.</p>
+        </div>
+        <button class="heart-hero-btn" id="heartHeroBtn" type="button"><span>♡</span> UN PEQUEÑO DETALLE PARA TI <span>♡</span></button>
       </div>
 
       <div class="hero-orbit" aria-hidden="true">
@@ -77,7 +108,7 @@
       </div>
     </section>
 
-    <section class="section intro" id="coincidencias">
+    <section class="section intro chapter" id="coincidencias" data-chapter-label="Coincidencias">
       <div class="section-number reveal">01</div>
       <div class="section-grid">
         <div class="section-title reveal">
@@ -107,9 +138,15 @@
         </div>
         <div class="moment-status">RAREZA: LEGENDARIA</div>
       </div>
+      <div class="coincidence-meter reveal">
+        <div class="meter-head"><strong>Medidor de coincidencias</strong><span id="coincidenceValue">87%</span></div>
+        <div class="meter-bar"><i id="coincidenceBar"></i></div>
+        <small>Diagnóstico: una coincidencia fue suficiente para desbloquear nuevos capítulos.</small>
+      </div>
+      <div class="soft-message reveal"><span>♡</span><p>Hay personas que no necesitan una fecha especial para hacer más bonito el recorrido.</p><span>♡</span></div>
     </section>
 
-    <section class="section calls-section" id="llamadas">
+    <section class="section calls-section chapter" id="llamadas" data-chapter-label="Llamadas">
       <div class="section-number reveal">02</div>
       <div class="split">
         <div class="phone-wrap reveal">
@@ -146,7 +183,7 @@
       </div>
     </section>
 
-    <section class="section impact" id="impacto">
+    <section class="section impact chapter" id="impacto" data-chapter-label="Impacto">
       <div class="section-number reveal">03</div>
       <div class="section-grid">
         <div class="section-title reveal">
@@ -177,7 +214,7 @@
       </div>
     </section>
 
-    <section class="section achievements" id="logros">
+    <section class="section achievements chapter" id="logros" data-chapter-label="Logros">
       <div class="section-number reveal">04</div>
       <div class="section-heading reveal">
         <p class="kicker">ACHIEVEMENTS</p>
@@ -231,7 +268,7 @@
       </div>
     </section>
 
-    <section class="section routes" id="rutas">
+    <section class="section routes chapter" id="rutas" data-chapter-label="Rutas">
       <div class="section-number reveal">05</div>
       <div class="section-heading reveal">
         <p class="kicker">RUTAS DEL PERLAVERSO</p>
@@ -271,7 +308,7 @@
       </div>
     </section>
 
-    <section class="section constellation" id="constelacion">
+    <section class="section constellation chapter" id="constelacion" data-chapter-label="Constelación">
       <div class="section-number reveal">06</div>
       <div class="section-heading reveal">
         <p class="kicker">CONSTELACIÓN DE MOMENTOS</p>
@@ -298,7 +335,7 @@
       </div>
     </section>
 
-    <section class="section expressions" id="expresiones">
+    <section class="section expressions chapter" id="expresiones" data-chapter-label="Expresiones">
       <div class="section-number reveal">07</div>
       <div class="section-grid">
         <div class="section-title reveal">
@@ -327,7 +364,7 @@
       <p class="tiny-note reveal">Tócalas. Algunas se resisten a quedarse quietas.</p>
     </section>
 
-    <section class="section message" id="mensaje">
+    <section class="section message chapter" id="mensaje" data-chapter-label="Mensaje">
       <div class="message-card reveal">
         <div class="message-spark">⚡</div>
         <p class="kicker">UNA COSA QUE SÍ VA EN SERIO</p>
@@ -342,7 +379,7 @@
       </div>
     </section>
 
-    <section class="closing" id="cierre">
+    <section class="closing chapter" id="cierre" data-chapter-label="Cierre">
       <div class="closing-glow" aria-hidden="true"></div>
       <div class="closing-content reveal">
         <p class="kicker">SIGUE CAMINANDO, PERLITA ⚡</p>
@@ -354,6 +391,9 @@
           Que nunca falten motivos para seguir creando, conociendo lugares, intentando cosas nuevas y creyendo un poquito más en todo lo que eres capaz de hacer.
         </p>
         <p class="closing-last">Y mientras tanto… <strong>el Perlaverso sigue expandiéndose.</strong></p>
+        <div class="heart-divider" aria-hidden="true"><span>♡</span><i></i><span>♡</span><i></i><span>♡</span></div>
+        <p class="closing-soft">Un pequeño recordatorio: hay presencias que hacen el camino un poquito más bonito.</p>
+        <button class="big-heart-btn" id="bigHeartBtn" type="button">HAZ LLOVER CORAZONES 💗</button>
         <button class="primary-btn ghost" id="continueBtn" type="button">CONTINUARÁ…</button>
         <div class="next-mission" id="nextMission" aria-live="polite"></div>
         <p class="signature">Jimy ✦ 2026</p>
@@ -374,6 +414,20 @@
   </aside>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <div class="love-modal" id="loveModal" aria-hidden="true">
+    <div class="love-modal-card">
+      <button class="love-modal-close" id="loveModalClose" type="button" aria-label="Cerrar">×</button>
+      <div class="love-letter-heart">♡</div>
+      <p class="kicker">UN DETALLE ESCONDIDO</p>
+      <h3>Para Perla</h3>
+      <p>No hacía falta que fuera cumpleaños, aniversario ni una fecha marcada en el calendario.</p>
+      <p>A veces simplemente provoca guardar un pedacito bonito de las personas, las coincidencias y los momentos que hacen más especial el camino.</p>
+      <p class="love-letter-last">Este pequeño universo existe por eso: <strong>porque algunas personas dejan una vibra bonita incluso en los días más normales.</strong></p>
+      <button class="love-letter-rain" id="loveLetterRain" type="button">LLENAR EL PERLAVERSO DE CORAZONES 💗</button>
+      <span class="love-sign">— Jimy</span>
+    </div>
+  </div>
 
   <div class="call-modal" id="callModal" aria-hidden="true">
     <div class="call-modal-card">
