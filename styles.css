@@ -762,3 +762,282 @@ body::before{
   body{background:radial-gradient(circle at 20% 10%,rgba(255,95,154,.20),transparent 33%),radial-gradient(circle at 80% 44%,rgba(192,91,255,.14),transparent 34%),linear-gradient(155deg,#190716,#22091e 34%,#110b20 72%,#150816)}
   .section.chapter:not(:last-child)::after{font-size:.56rem;letter-spacing:.11em}
 }
+
+
+/* CARTA FINAL PERLAVERSO */
+.final-letter-wrap{
+  margin:44px auto 10px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  position:relative;
+}
+.final-letter-kicker{
+  margin:0 0 18px;
+  color:#ffb1cc;
+  font-size:.66rem;
+  letter-spacing:.20em;
+  font-weight:850;
+  text-transform:uppercase;
+}
+.love-envelope{
+  --env-w:min(360px,78vw);
+  width:var(--env-w);
+  aspect-ratio:1.52/1;
+  position:relative;
+  cursor:pointer;
+  perspective:1000px;
+  filter:drop-shadow(0 28px 46px rgba(52,5,31,.36));
+  transition:transform .32s ease,filter .32s ease;
+  outline:none;
+}
+.love-envelope:hover,.love-envelope:focus-visible{
+  transform:translateY(-8px) rotate(-1deg);
+  filter:drop-shadow(0 34px 62px rgba(255,72,140,.25));
+}
+.envelope-shadow{
+  position:absolute;
+  left:8%;right:8%;bottom:-9%;
+  height:16%;
+  border-radius:50%;
+  background:rgba(12,2,10,.46);
+  filter:blur(16px);
+  transition:.6s ease;
+}
+.envelope-back{
+  position:absolute;inset:0;
+  border-radius:16px;
+  background:
+    radial-gradient(circle at 50% 0%,rgba(255,255,255,.17),transparent 22%),
+    linear-gradient(145deg,#ef719e,#c94c7e 52%,#a43b6a);
+  border:1px solid rgba(255,224,235,.28);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.25);
+}
+.envelope-letter-preview{
+  position:absolute;
+  z-index:2;
+  left:9%;right:9%;top:14%;height:74%;
+  border-radius:10px 10px 4px 4px;
+  padding:30px 24px 18px;
+  background:
+    linear-gradient(rgba(255,250,247,.96),rgba(255,238,242,.98)),
+    repeating-linear-gradient(0deg,transparent 0 27px,rgba(159,92,119,.08) 27px 28px);
+  color:#6c324d;
+  box-shadow:0 12px 25px rgba(62,9,34,.16);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  transition:transform .72s cubic-bezier(.2,.75,.2,1),opacity .5s ease;
+}
+.envelope-letter-preview span{
+  font-family:Georgia,"Times New Roman",serif;
+  font-style:italic;
+  font-size:clamp(1.8rem,5vw,2.6rem);
+  color:#8c345e;
+}
+.envelope-letter-preview small{
+  margin-top:14px;
+  color:#9b6d82;
+  font-family:Georgia,"Times New Roman",serif;
+  font-style:italic;
+  line-height:1.5;
+}
+.envelope-front{
+  position:absolute;z-index:4;inset:0;
+  clip-path:polygon(0 38%,50% 72%,100% 38%,100% 100%,0 100%);
+  border-radius:0 0 16px 16px;
+  background:
+    linear-gradient(145deg,rgba(255,154,190,.98),rgba(215,83,132,.98) 50%,rgba(177,58,106,.98));
+  border-bottom:1px solid rgba(255,221,233,.25);
+}
+.envelope-front::before,.envelope-front::after{
+  content:"";
+  position:absolute;bottom:0;width:54%;height:66%;
+  background:linear-gradient(150deg,rgba(255,255,255,.08),transparent);
+}
+.envelope-front::before{left:0;clip-path:polygon(0 0,100% 100%,0 100%)}
+.envelope-front::after{right:0;clip-path:polygon(100% 0,0 100%,100% 100%)}
+.envelope-flap{
+  position:absolute;z-index:5;left:0;right:0;top:0;height:57%;
+  transform-origin:50% 0%;
+  clip-path:polygon(0 0,100% 0,50% 100%);
+  border-radius:16px 16px 0 0;
+  background:linear-gradient(160deg,#ff9dbe,#d85c8d 65%,#b54171);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.20);
+  transition:transform .7s cubic-bezier(.2,.72,.2,1),filter .5s ease;
+}
+.envelope-seal{
+  position:absolute;z-index:7;left:50%;top:44%;
+  width:54px;height:54px;
+  transform:translate(-50%,-50%);
+  display:grid;place-items:center;
+  border-radius:50%;
+  color:#ffe7f0;
+  font-size:1.55rem;
+  background:
+    radial-gradient(circle at 35% 25%,#ff9fbd,#bc3f73 66%,#8f2b58);
+  border:2px solid rgba(255,226,237,.28);
+  box-shadow:0 10px 24px rgba(88,16,50,.24),inset 0 1px 0 rgba(255,255,255,.32);
+  transition:transform .4s ease,opacity .35s ease;
+}
+.love-envelope.opening .envelope-flap{
+  transform:rotateX(178deg);
+  filter:brightness(.86);
+  z-index:1;
+}
+.love-envelope.opening .envelope-letter-preview{
+  transform:translateY(-48%) scale(1.025);
+}
+.love-envelope.opening .envelope-seal{
+  transform:translate(-50%,-50%) scale(.4) rotate(22deg);
+  opacity:0;
+}
+.love-envelope.opening{transform:translateY(4px) scale(1.02)}
+.envelope-hint{
+  margin:18px 0 0;
+  color:rgba(255,211,226,.66);
+  font-size:.70rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  animation:letterHint 2.2s ease-in-out infinite;
+}
+@keyframes letterHint{50%{color:#ffdcea;transform:translateY(3px)}}
+
+.letter-modal{
+  position:fixed;
+  inset:0;
+  z-index:10020;
+  display:grid;
+  place-items:center;
+  padding:28px 18px;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .38s ease;
+}
+.letter-modal.open{opacity:1;pointer-events:auto}
+.letter-modal-backdrop{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(circle at 50% 20%,rgba(255,103,157,.14),transparent 34%),
+    rgba(13,3,12,.86);
+  backdrop-filter:blur(16px);
+}
+.letter-paper{
+  width:min(760px,94vw);
+  max-height:min(86vh,900px);
+  overflow:auto;
+  position:relative;
+  z-index:2;
+  border-radius:8px 8px 16px 16px;
+  padding:clamp(34px,7vw,76px) clamp(28px,7vw,72px) clamp(40px,7vw,68px);
+  color:#5d3044;
+  background:
+    radial-gradient(circle at 8% 8%,rgba(255,168,198,.16),transparent 28%),
+    radial-gradient(circle at 92% 92%,rgba(184,112,156,.10),transparent 26%),
+    linear-gradient(180deg,#fffaf8 0%,#fff3f4 54%,#fdebef 100%);
+  border:1px solid rgba(255,228,237,.88);
+  box-shadow:0 40px 130px rgba(26,2,17,.58),0 0 80px rgba(255,96,151,.08);
+  transform:translateY(32px) scale(.95) rotateX(5deg);
+  opacity:0;
+  transition:transform .62s cubic-bezier(.2,.75,.2,1),opacity .45s ease;
+  scrollbar-width:thin;
+  scrollbar-color:#d783a6 transparent;
+}
+.letter-modal.open .letter-paper{transform:none;opacity:1}
+.letter-paper::before{
+  content:"";
+  position:absolute;
+  inset:15px;
+  border:1px solid rgba(170,90,125,.14);
+  border-radius:4px 4px 12px 12px;
+  pointer-events:none;
+}
+.letter-paper-glow{
+  position:absolute;inset:0;pointer-events:none;
+  background:
+    linear-gradient(110deg,transparent 0 46%,rgba(255,255,255,.28) 50%,transparent 54%);
+  opacity:.35;
+}
+.letter-close{
+  position:absolute;right:18px;top:16px;z-index:5;
+  width:39px;height:39px;border-radius:50%;
+  border:1px solid rgba(128,58,89,.15);
+  background:rgba(126,52,86,.055);
+  color:#8b4b68;cursor:pointer;font-size:1.25rem;
+}
+.letter-close:hover{background:rgba(182,70,116,.10);transform:rotate(4deg)}
+.letter-topmark{
+  text-align:center;
+  font-size:2.3rem;
+  color:#c54e80;
+  filter:drop-shadow(0 6px 16px rgba(195,73,126,.15));
+}
+.letter-date{
+  margin:6px 0 10px;
+  text-align:center;
+  color:#b7859a;
+  font-size:.64rem;
+  letter-spacing:.20em;
+  font-weight:800;
+}
+.letter-paper h3{
+  margin:0 0 34px;
+  text-align:center;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(2.4rem,7vw,4.8rem);
+  font-weight:500;
+  font-style:italic;
+  letter-spacing:-.035em;
+  color:#7f3155;
+}
+.letter-body{
+  max-width:610px;
+  margin:auto;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:clamp(1.02rem,2vw,1.13rem);
+  line-height:1.9;
+}
+.letter-body p{margin:0 0 23px}
+.letter-body em{color:#9d4169}
+.letter-body strong{color:#7f2d54;font-weight:700}
+.letter-final{
+  margin-top:34px!important;
+  padding-top:28px;
+  border-top:1px solid rgba(146,70,105,.14);
+  text-align:center;
+  color:#71304f;
+  font-style:italic;
+}
+.letter-signature{
+  margin:36px 4% 0 auto;
+  width:max-content;
+  min-width:190px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  font-family:Georgia,"Times New Roman",serif;
+  transform:rotate(-2deg);
+}
+.letter-signature span{font-size:.9rem;color:#9b6d82;font-style:italic}
+.letter-signature strong{
+  margin-top:3px;
+  font-size:2.25rem;
+  font-style:italic;
+  font-weight:500;
+  color:#823259;
+}
+.letter-signature i{font-style:normal;color:#c64c80;font-size:1.1rem}
+body.letter-open{overflow:hidden}
+
+@media(max-width:640px){
+  .final-letter-wrap{margin-top:34px}
+  .love-envelope{--env-w:min(315px,82vw)}
+  .envelope-letter-preview{padding:23px 17px 14px}
+  .envelope-letter-preview small{font-size:.72rem}
+  .letter-modal{padding:14px 10px}
+  .letter-paper{max-height:91vh;padding:50px 27px 42px}
+  .letter-paper::before{inset:10px}
+  .letter-body{font-size:.98rem;line-height:1.78}
+  .letter-signature{margin-right:3%}
+}
