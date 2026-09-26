@@ -391,6 +391,23 @@
         <p class="closing-last">Y mientras tanto… <strong>el Perlaverso sigue expandiéndose.</strong></p>
         <div class="heart-divider" aria-hidden="true"><span>♡</span><i></i><span>♡</span><i></i><span>♡</span></div>
         <p class="closing-soft">Un pequeño recordatorio: hay presencias que, sin proponérselo, vuelven más bonito el camino y dejan ganas de seguir descubriendo el siguiente capítulo.</p>
+        
+        <div class="final-letter-wrap reveal">
+          <p class="final-letter-kicker">ANTES DE IRTE… HAY ALGO MÁS ♡</p>
+          <div class="love-envelope" id="loveEnvelope" role="button" tabindex="0" aria-label="Abrir carta para Perla">
+            <div class="envelope-shadow" aria-hidden="true"></div>
+            <div class="envelope-back"></div>
+            <div class="envelope-letter-preview">
+              <span>Para Perla</span>
+              <small>Hay cosas que se sienten mejor cuando quedan escritas.</small>
+            </div>
+            <div class="envelope-front"></div>
+            <div class="envelope-flap"></div>
+            <div class="envelope-seal">♡</div>
+          </div>
+          <p class="envelope-hint">Toca la carta para abrirla</p>
+        </div>
+
         <button class="primary-btn ghost" id="continueBtn" type="button">CONTINUARÁ…</button>
         <div class="next-mission" id="nextMission" aria-live="polite"></div>
         <p class="signature">Jimy ✦ 2026</p>
@@ -411,6 +428,42 @@
   </aside>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+
+  <div class="letter-modal" id="letterModal" aria-hidden="true">
+    <div class="letter-modal-backdrop" data-letter-close></div>
+    <article class="letter-paper" role="dialog" aria-modal="true" aria-labelledby="letterTitle">
+      <button class="letter-close" id="letterClose" type="button" aria-label="Cerrar carta">×</button>
+      <div class="letter-paper-glow" aria-hidden="true"></div>
+      <div class="letter-topmark">♡</div>
+      <p class="letter-date">PERLAVERSO · 2026</p>
+      <h3 id="letterTitle">Para ti, Perlita</h3>
+
+      <div class="letter-body">
+        <p>Es increíble pensar que todo empezó entre mensajes, ideas y ese clásico <em>“ojalá podamos coincidir”</em>, y que una de esas coincidencias terminara regalándonos aquellos dos días improvisados que todavía tienen su propio lugar en esta historia.</p>
+
+        <p>Hay encuentros que uno planea muchísimo y al final pasan sin dejar demasiado. Y hay otros que aparecen casi de la nada, sin horarios perfectos ni grandes planes, pero terminan convirtiéndose en recuerdos que uno guarda con una sonrisa. Para mí, conocerte ha sido un poquito así.</p>
+
+        <p>Me encanta que nuestra historia tenga de todo: llamadas que supuestamente iban a durar “unos minutos”, conversaciones que empiezan con cualquier cosa y terminan hablando de proyectos, innovación o alguna nueva idea; viajes que siguen entrando al mapa, bromas que probablemente nadie más entendería y hasta poder decir, oficialmente, que <strong>ya cocinamos juntos</strong>.</p>
+
+        <p>También me gusta esa parte tuya que siempre está buscando crecer, aprender, intentar y construir algo nuevo. Tal vez por eso tantas veces me nace recordarte que no dudes de tus capacidades. Porque desde este lado se nota muchísimo todo lo que puedes hacer, incluso en esos momentos en los que tú misma quizá no lo ves con tanta claridad.</p>
+
+        <p>No sé exactamente qué nombre ponerle a todas estas coincidencias —además de <strong>Perlaverso</strong>— y quizá tampoco hace falta. Solo quería dejarte escrito algo que a veces no se dice con tanta calma: <strong>ha sido increíble haberte conocido</strong>. Me alegra muchísimo que nuestros caminos se hayan cruzado y que, entre cosas tan simples, se hayan ido acumulando tantos pequeños recuerdos bonitos.</p>
+
+        <p>Ojalá la vida nos siga regalando más coincidencias, más conversaciones sin prisa, más lugares por conocer, cafecitos pendientes, proyectos que empiezan como una idea loca, llamadas de “solo unos minutos” que duran muchísimo más… y sí, algún cevichocho que todavía aparece como misión pendiente.</p>
+
+        <p>Y si algún día el camino se pone demasiado ruidoso, complicado o lleno de dudas, espero que no olvides la energía que tienes, la manera en que sigues avanzando y todo lo bonito que todavía puedes construir.</p>
+
+        <p class="letter-final">Sigue caminando, Perlita. <strong>Sin pausa, pero sin prisa.</strong><br />Y ojalá el Perlaverso todavía tenga bastantes capítulos por escribir. ♡</p>
+      </div>
+
+      <div class="letter-signature">
+        <span>Con mucho cariño,</span>
+        <strong>Jimy</strong>
+        <i>♡</i>
+      </div>
+    </article>
+  </div>
 
   <div class="call-modal" id="callModal" aria-hidden="true">
     <div class="call-modal-card">
